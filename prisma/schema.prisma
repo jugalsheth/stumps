@@ -1,0 +1,109 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id                String              @id @default(cuid())
+  email             String              @unique
+  name              String?
+  createdAt         DateTime            @default(now())
+  updatedAt         DateTime            @updatedAt
+  favoriteTeams     FavoriteTeam[]
+  favoritePlayers   FavoritePlayer[]
+  notifications     NotificationSetting[]
+  theme             String              @default("light")
+}
+
+model Team {
+  id          String         @id @default(cuid())
+  name        String
+  shortName   String
+  logo        String?
+  country     String
+  apiId       String         @unique // External API ID
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
+  favorites   FavoriteTeam[]
+  players     Player[]
+}
+
+model Player {
+  id              String           @id @default(cuid())
+  name            String
+  role            String           // Batsman, Bowler, All-rounder, Wicket-keeper
+  battingStyle    String?
+  bowlingStyle    String?
+  image           String?
+  country         String
+  apiId           String           @unique
+  teamId          String
+  team            Team             @relation(fields: [teamId], references: [id])
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+  favorites       FavoritePlayer[]
+}
+
+model Match {
+  id              String    @id @default(cuid())
+  apiId           String    @unique
+  title           String
+  matchFormat     String    // Test, ODI, T20, T10
+  venue           String
+  startTime       DateTime
+  status          String    // Scheduled, Live, Completed, Abandoned
+  team1           String
+  team2           String
+  team1Score      String?
+  team2Score      String?
+  result          String?
+  tossWinner      String?
+  tossDecision    String?
+  seriesName      String?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+}
+
+model FavoriteTeam {
+  id        String   @id @default(cuid())
+  userId    String
+  teamId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  team      Team     @relation(fields: [teamId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+
+  @@unique([userId, teamId])
+}
+
+model FavoritePlayer {
+  id        String   @id @default(cuid())
+  userId    String
+  playerId  String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  player    Player   @relation(fields: [playerId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+
+  @@unique([userId, playerId])
+}
+
+model NotificationSetting {
+  id                String   @id @default(cuid())
+  userId            String
+  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  matchStart        Boolean  @default(true)
+  liveUpdates       Boolean  @default(true)
+  criticalMoments   Boolean  @default(true)
+  matchResults      Boolean  @default(true)
+  newsAlerts        Boolean  @default(false)
+  pushSubscription  Json?    // Web Push subscription object
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  @@unique([userId])
+}
