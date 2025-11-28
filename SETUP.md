@@ -1,4 +1,4 @@
-# Cricket Tracker - Setup Guide
+# Stumps - Setup Guide
 
 ## Quick Start
 

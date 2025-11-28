@@ -28,7 +28,7 @@ export default async function DashboardPage() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-4xl font-bold mb-2">Cricket Tracker</h1>
+        <h1 className="text-4xl font-bold mb-2">Stumps</h1>
         <p className="text-muted-foreground">
           Stay updated with live scores, match updates, and cricket news
         </p>

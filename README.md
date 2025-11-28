@@ -1,4 +1,4 @@
-# 🏏 Cricket Tracker
+# 🏏 Stumps
 
 > **A production-grade, real-time cricket tracking platform built with cutting-edge web technologies and enterprise-level architecture patterns.**
 
@@ -90,7 +90,7 @@ This application follows **Domain-Driven Design (DDD)** principles with clear se
 ### Project Structure
 
 ```
-cricket-tracker/
+stumps/
 ├── app/                          # Next.js App Router
 │   ├── (auth)/                   # Authentication route group
 │   │   ├── login/
@@ -162,21 +162,21 @@ cricket-tracker/
 ### Installation
 
 1. **Clone the repository**
-   ```bash
-   git clone https://github.com/jugalsheth/cricket-tracker.git
-   cd cricket-tracker
-   ```
+```bash
+   git clone https://github.com/jugalsheth/stumps.git
+   cd stumps
+```
 
 2. **Install dependencies**
-   ```bash
-   npm install
-   ```
+```bash
+npm install
+```
 
 3. **Configure environment variables**
-   ```bash
-   cp .env.example .env.local
-   ```
-   
+```bash
+cp .env.example .env.local
+```
+
    Required variables:
    ```env
    # Database
@@ -199,23 +199,23 @@ cricket-tracker/
    ```
 
 4. **Set up the database**
-   ```bash
+```bash
    # Generate Prisma Client
-   npx prisma generate
+npx prisma generate
    
    # Run migrations
-   npx prisma migrate dev
+npx prisma migrate dev
    
    # (Optional) Seed database
    npx prisma db seed
-   ```
+```
 
 5. **Start the development server**
-   ```bash
-   npm run dev
-   ```
+```bash
+npm run dev
+```
 
-   Open [http://localhost:3000](http://localhost:3000) in your browser.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ---
 
@@ -292,7 +292,7 @@ npm run test:e2e
 ### Vercel (Recommended)
 
 1. **Connect Repository**
-   ```bash
+```bash
    vercel init
    vercel
    ```
@@ -405,8 +405,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📧 Contact & Support
 
-- **GitHub Issues**: [Report bugs or request features](https://github.com/jugalsheth/cricket-tracker/issues)
-- **Discussions**: [Join the conversation](https://github.com/jugalsheth/cricket-tracker/discussions)
+- **GitHub Issues**: [Report bugs or request features](https://github.com/jugalsheth/stumps/issues)
+- **Discussions**: [Join the conversation](https://github.com/jugalsheth/stumps/discussions)
 
 ---
 
@@ -414,6 +414,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **Built with ❤️ using Next.js 15, TypeScript, and modern web technologies**
 
-[⭐ Star this repo](https://github.com/jugalsheth/cricket-tracker) if you find it helpful!
+[⭐ Star this repo](https://github.com/jugalsheth/stumps) if you find it helpful!
 
 </div>

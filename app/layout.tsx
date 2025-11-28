@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Cricket Tracker - Live Scores & Match Updates",
+  title: "Stumps - Live Cricket Scores & Match Updates",
   description: "Track live cricket scores, match updates, team statistics, and player performance",
 };
 

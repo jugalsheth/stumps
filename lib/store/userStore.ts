@@ -70,7 +70,7 @@ export const useUserStore = create<UserStore>()(
       reset: () => set(defaultPreferences),
     }),
     {
-      name: 'cricket-tracker-preferences',
+      name: 'stumps-preferences',
     }
   )
 );
